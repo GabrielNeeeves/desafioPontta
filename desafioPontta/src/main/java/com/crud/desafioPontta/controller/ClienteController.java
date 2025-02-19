@@ -26,6 +26,19 @@ public class ClienteController {
         return repo.findAll();
     }
 
+    //GET BY ID
+    @GetMapping("/{id}")
+    public ClienteModel byId(@PathVariable Long id) throws Exception {
+
+        var clienteOptional = repo.findById(id);
+
+        if(clienteOptional.isPresent()) {
+            return clienteOptional.get();
+        } else {
+            throw  new Exception();
+        }
+    }
+
     //POST
     @PostMapping
     public ResponseEntity postCliente(@RequestBody ClienteDto dto) throws Exception {
@@ -47,7 +60,7 @@ public class ClienteController {
 
         if(clienteOptional.isPresent()) {
 
-            var clienteUpdate = new ClienteModel();
+            var clienteUpdate = clienteOptional.get();
 
             clienteUpdate.setEmail(dto.email());
             clienteUpdate.setPassword(dto.password());

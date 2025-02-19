@@ -20,6 +20,10 @@ export class ClienteComponent {
   email = '';
   password = '';
 
+  idFind = 0;
+  emailFind = '';
+  passwordFind = '';
+
   constructor(private service:ClienteService){};
 
   buttonClick() {
@@ -31,6 +35,10 @@ export class ClienteComponent {
 
     this.enviarDados();
 
+  }
+
+  buscarPorId(id:number) {
+    this.service.getById(id);
   }
 
   atualizarDados() {

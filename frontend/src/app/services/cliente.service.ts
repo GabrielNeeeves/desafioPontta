@@ -17,6 +17,11 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.url);
   }
 
+  //GET BY ID
+  getById(id:number) {
+    return this.http.get<Cliente>(`${this.url}/${id}`);
+  }
+
   //POST
   postCliente(cliente:Cliente) {
     return this.http.post<Cliente>(this.url, cliente);

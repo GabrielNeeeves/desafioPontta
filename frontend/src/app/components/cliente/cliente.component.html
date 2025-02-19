@@ -23,5 +23,15 @@
     <label>SENHA</label>
     <input type="password" [(ngModel)]="password" name="password" id="password" required>
 
-    <button (click)="enviarDados()" >Cadastrar Cliente</button>
+    <button (click)="buttonClick()" >{{ id ? 'Editar' : 'Cadastrar' }}</button>
 </form>
+
+<h3>Buscar por ID</h3>
+<label>ID</label>
+<input type="number" min="0" [(ngModel)]="idFind" name="id" id="id">
+
+<button (click)="buscarPorId(idFind)" >Encontrar</button>
+
+<p>ID: {{id}}</p>
+<p>EMAIL: {{email}}</p>
+<p>SENHA: {{password}}</p>
