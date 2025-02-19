@@ -1,0 +1,27 @@
+<h3>Buscando Clientes</h3>
+<button (click)="buscarDados()" > Buscar </button>
+
+<ul>
+    @for(c of clientes$ | async; track c) {
+        <li>ID: {{c.id}}</li>
+        <li>EMAIL: {{c.email}}</li>
+        <li>SENHA: {{c.password}}</li>
+        <button (click)="excluirDados(c.id!)" >Excluir</button>
+        <button (click)="preencherCampos(c)" >Editar</button>
+        <p></p>
+    }
+</ul>
+
+<h3>Cadastrar Clientes</h3>
+<form>
+    <label>ID</label>
+    <input type="text" [(ngModel)]="id" name="id" id="id" readonly>
+
+    <label>EMAIL</label>
+    <input type="email" [(ngModel)]="email" name="email" id="email" required>
+
+    <label>SENHA</label>
+    <input type="password" [(ngModel)]="password" name="password" id="password" required>
+
+    <button (click)="enviarDados()" >Cadastrar Cliente</button>
+</form>

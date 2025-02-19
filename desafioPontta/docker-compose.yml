@@ -1,0 +1,17 @@
+volumes:
+  desafioPonttaDb:
+
+services:
+  db:
+    image: postgres
+
+    volumes:
+      - desafioPonttaDb:/var/lib/mysql
+
+    environment:
+      POSTGRES_DB: desafioPonttaDb
+      POSTGRES_USER: userroot
+      POSTGRES_PASSWORD: root
+
+    ports:
+      - "5432:5432"
