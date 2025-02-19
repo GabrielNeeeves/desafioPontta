@@ -20,7 +20,7 @@ export class ClienteComponent {
   email = '';
   password = '';
 
-  idFind = 0;
+  idFind:number = 0;
   emailFind = '';
   passwordFind = '';
 
@@ -30,15 +30,23 @@ export class ClienteComponent {
 
     if(this.id) {
       this.atualizarDados();
+      alert("Cliente atualizado!");
       return;
     }
 
     this.enviarDados();
+    alert("Cliente cadastrado!");
 
   }
 
   buscarPorId(id:number) {
-    this.service.getById(id);
+    this.service.getById(id).subscribe(cliente => {
+      this.idFind = cliente.id!;
+      this.emailFind = cliente.email;
+      this.passwordFind = cliente.password;
+    }
+      
+  );
   }
 
   atualizarDados() {
@@ -64,6 +72,7 @@ export class ClienteComponent {
 
   excluirDados(id:number) {
     this.service.deleteCliente(id).subscribe(() => this.buscarDados());
+    alert("Cliente excluido!");
   }
 
   preencherCampos(c:Cliente) {
