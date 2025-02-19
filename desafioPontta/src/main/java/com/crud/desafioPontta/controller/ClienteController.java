@@ -28,14 +28,14 @@ public class ClienteController {
 
     //POST
     @PostMapping
-    public ResponseEntity postCliente(@RequestBody ClienteDto dto) {
+    public ResponseEntity postCliente(@RequestBody ClienteDto dto) throws Exception {
 
-        try {
+        if(dto.email().contains("@")) {
             var novoCliente = new ClienteModel(dto);
             repo.save(novoCliente);
             return new ResponseEntity(HttpStatus.CREATED);
-        } catch(Exception e) {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        } else {
+            throw new Exception();
         }
 
     }
