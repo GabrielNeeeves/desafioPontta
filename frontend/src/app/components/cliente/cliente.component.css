@@ -1,0 +1,16 @@
+ body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
+ body form {
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: rgb(105, 105, 105);
+    border-radius: 8px;
+ }

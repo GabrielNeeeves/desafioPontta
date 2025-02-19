@@ -1,37 +1,39 @@
-<h3>Buscando Clientes</h3>
-<button (click)="buscarDados()" > Buscar </button>
-
-<ul>
-    @for(c of clientes$ | async; track c) {
-        <li>ID: {{c.id}}</li>
-        <li>EMAIL: {{c.email}}</li>
-        <li>SENHA: {{c.password}}</li>
-        <button (click)="excluirDados(c.id!)" >Excluir</button>
-        <button (click)="preencherCampos(c)" >Editar</button>
-        <p></p>
-    }
-</ul>
-
-<h3>Cadastrar Clientes</h3>
-<form>
+<body>
+    <h3>Buscando Clientes</h3>
+    <button (click)="buscarDados()" > Buscar </button>
+    
+    <ul>
+        @for(c of clientes$ | async; track c) {
+            <li>ID: {{c.id}}</li>
+            <li>EMAIL: {{c.email}}</li>
+            <li>SENHA: {{c.password}}</li>
+            <button (click)="excluirDados(c.id!)" >Excluir</button>
+            <button (click)="preencherCampos(c)" >Editar</button>
+            <p></p>
+        }
+    </ul>
+    
+    <h3>Cadastrar Clientes</h3>
+    <form>
+        <label>ID:</label>
+        <input type="text" [(ngModel)]="id" name="id" id="id" readonly>
+    
+        <label>EMAIL:</label>
+        <input type="email" [(ngModel)]="email" name="email" id="email" placeholder="Deve conter @" required>
+    
+        <label>SENHA:</label>
+        <input type="password" [(ngModel)]="password" name="password" id="password" required>
+    
+        <button (click)="buttonClick()" >{{ id ? 'Editar' : 'Cadastrar' }}</button>
+    </form>
+    
+    <h3>Buscar por ID</h3>
     <label>ID</label>
-    <input type="text" [(ngModel)]="id" name="id" id="id" readonly>
-
-    <label>EMAIL</label>
-    <input type="email" [(ngModel)]="email" name="email" id="email" placeholder="Deve conter @" required>
-
-    <label>SENHA</label>
-    <input type="password" [(ngModel)]="password" name="password" id="password" required>
-
-    <button (click)="buttonClick()" >{{ id ? 'Editar' : 'Cadastrar' }}</button>
-</form>
-
-<h3>Buscar por ID</h3>
-<label>ID</label>
-<input type="number" min="0" [(ngModel)]="idFind" name="id" id="id">
-
-<button (click)="buscarPorId(idFind)" >Encontrar</button>
-
-<p>ID: {{idFind}}</p>
-<p>EMAIL: {{emailFind}}</p>
-<p>SENHA: {{passwordFind}}</p>
+    <input type="number" min="0" [(ngModel)]="idFind" name="id" id="id">
+    
+    <button (click)="buscarPorId(idFind)" >Encontrar</button>
+    
+    <p>ID: {{idFind}}</p>
+    <p>EMAIL: {{emailFind}}</p>
+    <p>SENHA: {{passwordFind}}</p>
+</body>
